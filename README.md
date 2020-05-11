@@ -1,6 +1,8 @@
 # Software_Engineering_CCCC
 
-## Gruppenteilnehmer
+**Belegarbeit im Fach Software Engineering II, SoSe 2020**
+
+#### Gruppenteilnehmer:
 
 * Lionel Burg
 * Dominic Berge
