@@ -8,7 +8,13 @@ public class CCCC_Dlg {
     private JButton codeEinloesenButton;
     private JButton fuetternButton;
 
-    private void createUIComponents() {
+    private void createUIComponents()
+    {
         // TODO: place custom component creation code here
+    }
+
+    public static void main(String[] args)
+    {
+        System.out.println("Hello, World !!!");
     }
 }
