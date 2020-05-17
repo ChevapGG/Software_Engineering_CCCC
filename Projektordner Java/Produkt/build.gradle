@@ -1,5 +1,12 @@
+import main.CCCC_Dlg
+
 plugins {
-    id 'java'
+    id 'application'
+}
+apply plugin : 'java'
+
+application {
+    mainClassName = CCCC_Dlg
 }
 
 group 'org.example'

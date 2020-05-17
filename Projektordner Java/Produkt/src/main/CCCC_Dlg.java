@@ -9,7 +9,8 @@ public class CCCC_Dlg {
     private JButton fuetternButton;
     private JPanel panelMain;
 
-    private void createUIComponents() {
+    private void createUIComponents()
+    {
         // TODO: place custom component creation code here
     }
 
