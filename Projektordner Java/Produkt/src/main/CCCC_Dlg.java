@@ -2,7 +2,8 @@ package main;
 
 import javax.swing.*;
 
-public class CCCC_Dlg {
+public class CCCC_Dlg
+{
     private JTextArea esGibt23UnterartenTextArea;
     private JTextField textField1;
     private JButton codeEinloesenButton;
