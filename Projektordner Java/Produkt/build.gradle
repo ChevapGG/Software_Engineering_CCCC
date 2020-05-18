@@ -1,4 +1,4 @@
-import main.CCCC_Dlg
+//import main.CCCC_Dlg
 
 plugins {
     id 'application'
@@ -14,8 +14,16 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+   // jcenter()
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+  //  testCompile 'org.testng:testng:6.10'
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testCompile group: 'org.testng', name: 'testng', version: '7.1.0'
+    // https://mvnrepository.com/artifact/com.google.inject/guice
+    compile group: 'com.google.inject', name: 'guice', version: '4.2.3'
+
+
 }
