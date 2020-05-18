@@ -109,7 +109,7 @@ public class CCCC_Dlg {
             }
 
             @Override
-            public void windowClosing(WindowEvent e) {
+            public void windowClosing(WindowEvent e) { //Save Gamestate [int state, int healthyFood, string lastCode]
 
             }
 
