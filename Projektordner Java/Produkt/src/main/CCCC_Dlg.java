@@ -14,7 +14,7 @@ public class CCCC_Dlg
     private int displayInterval = 5;
     private int factInterval = 10;
     private int state = 1;
-    private int foodCounter = 0;
+    private int foodCounter = 4;
     private String lastCode = "1337";
 
     private JTextArea ta_FactArea;
@@ -79,6 +79,14 @@ public class CCCC_Dlg
                     changeDisplay(state);
                 }
 
+                if (foodCounter == 0 || state == 0)
+                {
+                    btn_fuettern.setEnabled(false);
+                }
+                else
+                {
+                    btn_fuettern.setEnabled(true);
+                }
 
                 // CCCC_Dlg.lbl_Display.setIcon(new ImageIcon(myPicture));
             }
