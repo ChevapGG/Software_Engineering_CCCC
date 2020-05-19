@@ -13,7 +13,7 @@ public class CCCC_Dlg {
     private int displayInterval = 5;
     private int factInterval = 10;
     private int state = 1;
-    private int healthyFood = 0;
+    private int foodCounter = 0;
     private String lastCode = "1337";
 
     private JTextArea ta_FactArea;
@@ -32,8 +32,8 @@ public class CCCC_Dlg {
             public void actionPerformed(ActionEvent e) {
                 if (CodeCheck())
                 {
-                    healthyFood += 4;
-                    lbl_counter.setText(String.valueOf(healthyFood));
+                    foodCounter += 4;
+                    lbl_counter.setText(String.valueOf(foodCounter));
                 }
 
             }
@@ -41,11 +41,11 @@ public class CCCC_Dlg {
         btn_fuettern.addActionListener(new ActionListener() { //feed Chipmunk and decrement food counter
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (healthyFood > 0 && state > 0)
+                if (foodCounter > 0 && state > 0)
                 {
-                    healthyFood--;
+                    foodCounter--;
                     state--;
-                    lbl_counter.setText(String.valueOf(healthyFood));
+                    lbl_counter.setText(String.valueOf(foodCounter));
                     changeDisplay(state);
                 }
             }
@@ -157,7 +157,7 @@ public class CCCC_Dlg {
 
     public void changeFact(){
 
-        String[] facts = {"Es gibt 25 Hörnchen untergattungen.","Streifenhörnchen wiegen zwischen 30 und 120 gramm.","Streifenhörnchen sind tagaktiv","Streifenhörnchen leben hauptsächlich in Wäldern.","Die Tunnel der Streifenhörnchen können über 3.5m lang werden.","Streifenhörnchen teilen ihre Tunnel in Schlaf- und Abfalltunnel auf."};
+        String[] facts = {"Es gibt 25 Hörnchen Untergattungen.","Streifenhörnchen wiegen zwischen 30 und 120 Gramm.","Streifenhörnchen sind tagaktiv","Streifenhörnchen leben hauptsächlich in Wäldern.","Die Tunnel der Streifenhörnchen können über 3.5m lang werden.","Streifenhörnchen teilen ihre Tunnel in Schlaf- und Abfalltunnel auf."};
         String random = (facts[new Random().nextInt(facts.length)]);
         ta_FactArea.setText(random);
     }
