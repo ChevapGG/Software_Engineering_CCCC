@@ -9,7 +9,8 @@ import java.awt.event.WindowListener;
 import java.io.File;
 import java.util.Random;
 
-public class CCCC_Dlg {
+public class CCCC_Dlg
+{
     private int displayInterval = 5;
     private int factInterval = 10;
     private int state = 1;
@@ -23,13 +24,16 @@ public class CCCC_Dlg {
     private JPanel pnl_Main;
     private JLabel lbl_Display;
     private JLabel lbl_counter;
+    private JLabel lbl_wrongCode;
 
 
-
-    public CCCC_Dlg() {
-        btn_CodeEinloesen.addActionListener(new ActionListener() { //Check if the code in textField1 is correct
+    public CCCC_Dlg()
+    {
+        btn_CodeEinloesen.addActionListener(new ActionListener() //Check if the code in textField1 is correct
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 if (CodeCheck())
                 {
                     foodCounter += 4;
@@ -38,7 +42,8 @@ public class CCCC_Dlg {
 
             }
         });
-        btn_fuettern.addActionListener(new ActionListener() { //feed Chipmunk and decrement food counter
+        btn_fuettern.addActionListener(new ActionListener() //feed Chipmunk and decrement food counter
+        {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (foodCounter > 0 && state > 0)
@@ -50,11 +55,13 @@ public class CCCC_Dlg {
                 }
             }
         });
-        Timer t = new Timer(1000, new ActionListener() {    //adds a timer to change game state after a certain amount of time
+        Timer t = new Timer(1000, new ActionListener() //adds a timer to change game state after a certain amount of time
+        {
             int k = 0;
 
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 k++;
                 System.out.println(k);
 
@@ -87,7 +94,8 @@ public class CCCC_Dlg {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         System.out.println("Hello, World !!!");
         JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
         frame.setContentPane(new CCCC_Dlg().pnl_Main);
@@ -102,39 +110,47 @@ public class CCCC_Dlg {
         File directory = new File("./");        //Debug to see where we are
         System.out.println(directory.getAbsolutePath());
 
-        frame.addWindowListener(new WindowListener() {
+        frame.addWindowListener(new WindowListener()
+        {
             @Override
-            public void windowOpened(WindowEvent e) {
+            public void windowOpened(WindowEvent e)
+            {
 
             }
 
             @Override
-            public void windowClosing(WindowEvent e) { //Save Gamestate [int state, int healthyFood, string lastCode]
+            public void windowClosing(WindowEvent e) //Save Gamestate [int state, int healthyFood, string lastCode]
+            {
 
             }
 
             @Override
-            public void windowClosed(WindowEvent e) {
+            public void windowClosed(WindowEvent e)
+            {
 
             }
 
             @Override
-            public void windowIconified(WindowEvent e) {
+            public void windowIconified(WindowEvent e)
+            {
 
             }
 
             @Override
-            public void windowDeiconified(WindowEvent e) {
+            public void windowDeiconified(WindowEvent e)
+            {
 
             }
 
             @Override
-            public void windowActivated(WindowEvent e) {
+            public void windowActivated(WindowEvent e)
+            {
 
             }
 
             @Override
-            public void windowDeactivated(WindowEvent e) {
+            public void windowDeactivated(WindowEvent e)
+            {
 
             }
         });
@@ -143,7 +159,8 @@ public class CCCC_Dlg {
     }
 
 
-    public void changeDisplay(int state){
+    public void changeDisplay(int state)
+    {
         ImageIcon icon0 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/happy.png");
         ImageIcon icon1 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/neutral.png");
         ImageIcon icon2 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/hungry.png");
@@ -155,17 +172,19 @@ public class CCCC_Dlg {
             lbl_Display.setIcon(icon2);
     }
 
-    public void changeFact(){
-
+    public void changeFact()
+    {
         String[] facts = {"Es gibt 25 Hörnchen Untergattungen.","Streifenhörnchen wiegen zwischen 30 und 120 Gramm.","Streifenhörnchen sind tagaktiv","Streifenhörnchen leben hauptsächlich in Wäldern.","Die Tunnel der Streifenhörnchen können über 3.5m lang werden.","Streifenhörnchen teilen ihre Tunnel in Schlaf- und Abfalltunnel auf."};
         String random = (facts[new Random().nextInt(facts.length)]);
         ta_FactArea.setText(random);
     }
 
-public boolean CodeCheck(){
+public boolean CodeCheck()
+{
     int i = 0;
     String[] result = tf_CodeField.getText().split("-");
-    for (int x=0; x<result.length; x++) {
+    for (int x=0; x<result.length; x++)
+    {
         System.out.println(result[x]);
 
         try
@@ -177,8 +196,8 @@ public boolean CodeCheck(){
             System.out.println("NumberFormatException: " + nfe.getMessage());
         }
     }
-    if (!tf_CodeField.getText().equalsIgnoreCase(lastCode)) {
-
+    if (!tf_CodeField.getText().equalsIgnoreCase(lastCode))
+    {
         System.out.println("-----");
         System.out.println("Debug:");
         System.out.println(lastCode);
@@ -188,7 +207,21 @@ public boolean CodeCheck(){
         lastCode = tf_CodeField.getText();
 
         if (i / 3 == 1337)
+        {
+            lbl_wrongCode.setForeground(Color.green);
+            lbl_wrongCode.setText("Code eingelöst");
             return true;
+        }
+        else {
+            lbl_wrongCode.setForeground(Color.red);
+            lbl_wrongCode.setText("ungültiger Code");
+        }
+
+    }
+    else
+    {
+        lbl_wrongCode.setForeground(Color.red);
+        lbl_wrongCode.setText("bereits eingelöst");
     }
     return false;
 };
