@@ -107,9 +107,14 @@ public class GUI_Controller
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                /*
                 ImageIcon icon0 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/happy.png");
                 ImageIcon icon1 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/neutral.png");
                 ImageIcon icon2 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/hungry.png");
+                */
+                ImageIcon icon0 = new ImageIcon("./Images/happy.png");
+                ImageIcon icon1 = new ImageIcon("./Images/neutral.png");
+                ImageIcon icon2 = new ImageIcon("./Images/hungry.png");
                 if (MSK.getState() == 0)
                     setLbl_Display(icon0);
                 if (MSK.getState() == 1)
@@ -201,6 +206,7 @@ public void initGUI()
         public void windowClosing(WindowEvent e) //Save Gamestate [int state, int healthyFood, string lastCode]
         {
             SPZ.Save();
+            System.exit(0);
         }
 
         @Override
