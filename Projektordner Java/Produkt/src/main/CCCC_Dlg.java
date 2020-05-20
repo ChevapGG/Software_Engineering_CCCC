@@ -14,10 +14,51 @@ public class CCCC_Dlg
     private int displayInterval = 25;
     private int factInterval = 50;
     private int state = 1;
-    private int foodCounter = 4;
+    private int cereal_counter = 4;
     private String lastCode = "1337";
 
     private JTextArea ta_FactArea;
+
+    public String getTa_FactArea() {
+        return ta_FactArea.getText();
+    }
+
+    public void setTa_FactArea(String a) {
+        ta_FactArea.setText(a);
+    }
+
+    public String getTf_CodeField() {
+        return tf_CodeField.getText();
+    }
+
+    public void setTf_CodeField(String a) {
+        tf_CodeField.setText(a);
+    }
+
+    public Icon getLbl_Display() {
+        return lbl_Display.getIcon();
+    }
+
+    public void setLbl_Display(ImageIcon a) {
+        lbl_Display.setIcon(a);
+    }
+
+    public Icon getLbl_counter() {
+        return lbl_counter.getIcon();
+    }
+
+    public void setLbl_counter(int a) {
+        lbl_counter.setText(String.valueOf(a));
+    }
+
+    public String getLbl_wrongCode() {
+        return lbl_wrongCode.getText();
+    }
+
+    public void setLbl_wrongCode(String a) {
+        lbl_wrongCode.setText(a);
+    }
+
     private JTextField tf_CodeField;
     private JButton btn_CodeEinloesen;
     private JButton btn_fuettern;
@@ -34,10 +75,10 @@ public class CCCC_Dlg
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                if (CodeCheck())
+                if (checkcode())
                 {
-                    foodCounter += 4;
-                    lbl_counter.setText(String.valueOf(foodCounter));
+                    cereal_counter += 4;
+                    lbl_counter.setText(String.valueOf(cereal_counter));
                 }
 
             }
@@ -46,11 +87,11 @@ public class CCCC_Dlg
         {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (foodCounter > 0 && state > 0)
+                if (cereal_counter > 0 && state > 0)
                 {
-                    foodCounter--;
+                    cereal_counter--;
                     state--;
-                    lbl_counter.setText(String.valueOf(foodCounter));
+                    lbl_counter.setText(String.valueOf(cereal_counter));
                     changeDisplay(state);
                 }
             }
@@ -79,7 +120,7 @@ public class CCCC_Dlg
                     changeDisplay(state);
                 }
 
-                if (foodCounter == 0 || state == 0)
+                if (cereal_counter == 0 || state == 0)
                 {
                     btn_fuettern.setEnabled(false);
                 }
@@ -93,6 +134,7 @@ public class CCCC_Dlg
         });
 
         t.start();
+
 
     }
 
@@ -187,7 +229,7 @@ public class CCCC_Dlg
         ta_FactArea.setText(random);
     }
 
-public boolean CodeCheck()
+public boolean checkcode()
 {
     int i = 0;
     String[] result = tf_CodeField.getText().split("-");
