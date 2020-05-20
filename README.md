@@ -10,7 +10,7 @@
 
 #### Anwenderdokumentation
 
-![](./Dokumenteordner/Misc/CCCC_GUI_proto.png)
+![](./Dokumenteordner/Misc/Window.png)
 
 * Fakten: 
     * Alle fünf Sekunden wird ein neuer Fakt angezeigt

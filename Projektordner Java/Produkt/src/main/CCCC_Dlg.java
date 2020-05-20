@@ -146,7 +146,7 @@ public class CCCC_Dlg
 
     public static void main(String[] args)
     {
-        System.out.println("Hello, World !!!");
+        System.out.println("Execution started.");
         JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
         frame.setContentPane(new CCCC_Dlg().pnl_Main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
