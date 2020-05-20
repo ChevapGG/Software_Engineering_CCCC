@@ -10,12 +10,13 @@ public class Spielprozessor
 {
     private int cereal_counter = 4;
     private String lastCode = "1337";
+    static CCCC_Dlg CDLG;
 
 
     public boolean checkcode()
     {
         int i = 0;
-        String[] result = CCCC_Dlg.getTf_CodeField().split("-");
+        String[] result = CDLG.getTf_CodeField().split("-");
         for (int x=0; x<result.length; x++)
         {
             System.out.println(result[x]);
@@ -29,15 +30,15 @@ public class Spielprozessor
                 System.out.println("NumberFormatException: " + nfe.getMessage());
             }
         }
-        if (!CCCC_Dlg.getTf_CodeField().equalsIgnoreCase(lastCode))
+        if (!CDLG.getTf_CodeField().equalsIgnoreCase(lastCode))
         {
             System.out.println("-----");
             System.out.println("Debug:");
             System.out.println(lastCode);
-            System.out.println(CCCC_Dlg.getTf_CodeField());
+            System.out.println(CDLG.getTf_CodeField());
             System.out.println("-----");
 
-            lastCode = CCCC_Dlg.getTf_CodeField();
+            lastCode = CDLG.getTf_CodeField();
 
             if (i / 3 == 1337)
             {
@@ -68,7 +69,7 @@ public class Spielprozessor
         GUI_Controller GUIC = new GUI_Controller();
         Maskottchen MSK = new Maskottchen();
         //Spielprozessor SPZ = new Spielprozessor();
-        CCCC_Dlg CDLG = new CCCC_Dlg();
+        CDLG = new CCCC_Dlg();
 
         JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
         frame.setContentPane(new CCCC_Dlg().pnl_Main);
