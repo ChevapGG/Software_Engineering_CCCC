@@ -9,6 +9,9 @@ import java.awt.event.WindowListener;
 import java.io.File;
 import java.util.Random;
 
+import static main.Spielprozessor.MSK;
+import static main.Spielprozessor.SPZ;
+
 public class GUI_Controller
 {
     private int displayInterval = 25;
@@ -47,7 +50,7 @@ public class GUI_Controller
         return lbl_counter.getIcon();
     }
 
-    public void setLbl_counter(int a) {
+    public void setLbl_counter(String a) {
         lbl_counter.setText(String.valueOf(a));
     }
 
@@ -67,6 +70,12 @@ public class GUI_Controller
         lbl_wrongCode.setForeground(Color.red);
     }
 
+    public void enable_btn(boolean a)
+    {
+        btn_fuettern.setEnabled(a);
+    }
+
+
     private JTextField tf_CodeField;
     private JButton btn_CodeEinloesen;
     private JButton btn_fuettern;
@@ -83,27 +92,23 @@ public class GUI_Controller
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                if (checkcode())
-                {
-                    cereal_counter += 4;
-                    lbl_counter.setText(String.valueOf(cereal_counter));
-                }
-
+                SPZ.add_cerial(SPZ.checkcode());
             }
         });
         btn_fuettern.addActionListener(new ActionListener() //feed Chipmunk and decrement food counter
         {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (cereal_counter > 0 && state > 0)
+                if (SPZ.getCereal_counter() > 0 && MSK.getState() > 0)
                 {
-                    cereal_counter--;
-                    state--;
-                    lbl_counter.setText(String.valueOf(cereal_counter));
-                    changeDisplay(state);
+                    SPZ.setCereal_counter(SPZ.getCereal_counter() - 1);
+                    MSK.setState(MSK.getState() - 1);
+                    lbl_counter.setText(String.valueOf(SPZ.getCereal_counter()));
+                    SPZ.changeDisplay(MSK.getState());
                 }
             }
         });
+        /*
         Timer t = new Timer(200, new ActionListener() //adds a timer to change game state after a certain amount of time
         {
             int k = 0;
@@ -117,7 +122,7 @@ public class GUI_Controller
                 if (k%factInterval == 0)
                 {
                     System.out.println("new Facts!");
-                    changeFact();
+                    SPZ.change_facts();
                 }
 
                 if (k%displayInterval == 0)
@@ -125,7 +130,7 @@ public class GUI_Controller
                     System.out.println("new Facts!");
                     if (state < 2)
                     state++;
-                    changeDisplay(state);
+                    SPZ.changeDisplay(state);
                 }
 
                 if (cereal_counter == 0 || state == 0)
@@ -142,7 +147,7 @@ public class GUI_Controller
         });
 
         t.start();
-
+*/
 
     }
 
@@ -154,7 +159,7 @@ public class GUI_Controller
 
 
 
-
+/*
     public void changeDisplay(int state)
     {
         ImageIcon icon0 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/happy.png");
@@ -167,14 +172,17 @@ public class GUI_Controller
         if (state == 2)
             lbl_Display.setIcon(icon2);
     }
+*/
 
+    /*
     public void changeFact()
     {
         String[] facts = {"Es gibt 25 Hörnchen Untergattungen.","Streifenhörnchen wiegen zwischen 30 und 120 Gramm.","Streifenhörnchen sind tagaktiv","Streifenhörnchen leben hauptsächlich in Wäldern.","Die Tunnel der Streifenhörnchen können über 3.5m lang werden.","Streifenhörnchen teilen ihre Tunnel in Schlaf- und Abfalltunnel auf."};
         String random = (facts[new Random().nextInt(facts.length)]);
         ta_FactArea.setText(random);
     }
-
+*/
+    /*
 public boolean checkcode()
 {
     int i = 0;
@@ -221,5 +229,5 @@ public boolean checkcode()
     }
     return false;
 };
-
+*/
 }

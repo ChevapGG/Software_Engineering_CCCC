@@ -2,15 +2,30 @@ package main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
+import java.util.Random;
 
 public class Spielprozessor
 {
+    public int getCereal_counter() {
+        return cereal_counter;
+    }
+
+    public void setCereal_counter(int cereal_counter) {
+        this.cereal_counter = cereal_counter;
+    }
+
+    private int displayInterval = 25;
+    private int factInterval = 50;
     private int cereal_counter = 4;
     private String lastCode = "1337";
     static GUI_Controller CDLG;
+    static Spielprozessor SPZ;
+    static Maskottchen MSK;
 
 
     public boolean checkcode()
@@ -30,15 +45,15 @@ public class Spielprozessor
                 System.out.println("NumberFormatException: " + nfe.getMessage());
             }
         }
-        if (!CDLG.getTf_CodeField().equalsIgnoreCase(lastCode))
+        if (!CDLG.getTf_CodeField().equalsIgnoreCase(SPZ.lastCode))
         {
             System.out.println("-----");
             System.out.println("Debug:");
-            System.out.println(lastCode);
+            System.out.println(SPZ.lastCode);
             System.out.println(CDLG.getTf_CodeField());
             System.out.println("-----");
 
-            lastCode = CDLG.getTf_CodeField();
+            SPZ.lastCode = CDLG.getTf_CodeField();
 
             if (i / 3 == 1337)
             {
@@ -62,13 +77,49 @@ public class Spielprozessor
 
 
 
+
+
+    public void add_cerial(boolean a)
+    {
+        if (a) {
+            SPZ.cereal_counter += 4;
+            CDLG.setLbl_counter((String.valueOf(cereal_counter)));
+        }
+    }
+
+    public void changeDisplay(int state)
+    {
+        ImageIcon icon0 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/happy.png");
+        ImageIcon icon1 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/neutral.png");
+        ImageIcon icon2 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/hungry.png");
+        if (state == 0)
+            CDLG.setLbl_Display(icon0);
+        if (state == 1)
+            CDLG.setLbl_Display(icon1);
+        if (state == 2)
+            CDLG.setLbl_Display(icon2);
+    }
+
+
+    public void change_state()
+    {
+
+    }
+
+    public void change_facts()
+    {
+        String[] facts = {"Es gibt 25 Hörnchen Untergattungen.","Streifenhörnchen wiegen zwischen 30 und 120 Gramm.","Streifenhörnchen sind tagaktiv","Streifenhörnchen leben hauptsächlich in Wäldern.","Die Tunnel der Streifenhörnchen können über 3.5m lang werden.","Streifenhörnchen teilen ihre Tunnel in Schlaf- und Abfalltunnel auf."};
+        String random = (facts[new Random().nextInt(facts.length)]);
+        Spielprozessor.CDLG.setTa_FactArea(random);
+    }
+
     public static void main(String[] args)
     {
         System.out.println("Execution started.");
 
-        GUI_Controller123 GUIC = new GUI_Controller123();
-        Maskottchen MSK = new Maskottchen();
-        //Spielprozessor SPZ = new Spielprozessor();
+       // GUI_Controller123 GUIC = new GUI_Controller123();
+        MSK = new Maskottchen();
+        SPZ = new Spielprozessor();
         CDLG = new GUI_Controller();
 
         JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
@@ -128,6 +179,45 @@ public class Spielprozessor
 
             }
         });
+
+        Timer t = new Timer(200, new ActionListener() //adds a timer to change game state after a certain amount of time
+        {
+            int k = 0;
+
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                k++;
+                System.out.println(k);
+
+                if (k%SPZ.factInterval == 0)
+                {
+                    System.out.println("new Facts!");
+                    SPZ.change_facts();
+                }
+
+                if (k%SPZ.displayInterval == 0)
+                {
+                    System.out.println("new Facts!");
+                    if (MSK.getState() < 2)
+                        MSK.setState(MSK.getState() + 1);
+                    SPZ.changeDisplay(MSK.getState());
+                }
+
+                if (SPZ.getCereal_counter() == 0 || MSK.getState() == 0)
+                {
+                    CDLG.enable_btn(false);
+                }
+                else
+                {
+                    CDLG.enable_btn(true);
+                }
+
+                // CCCC_Dlg.lbl_Display.setIcon(new ImageIcon(myPicture));
+            }
+        });
+
+        t.start();
 
 
     }
