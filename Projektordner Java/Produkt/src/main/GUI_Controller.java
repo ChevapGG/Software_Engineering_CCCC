@@ -108,6 +108,7 @@ public class GUI_Controller {
                 if (MSK.getState() == 2)
                     setLbl_Display(icon2);
                 setTa_FactArea(Spielprozessor.GUIC.getTa_FactArea());
+                setLbl_counter(Integer.toString(SPZ.getCereal_counter()));
             }
         });
         t.start();
