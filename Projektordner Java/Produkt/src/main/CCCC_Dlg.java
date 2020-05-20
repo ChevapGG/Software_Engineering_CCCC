@@ -11,8 +11,8 @@ import java.util.Random;
 
 public class CCCC_Dlg
 {
-    private int displayInterval = 5;
-    private int factInterval = 10;
+    private int displayInterval = 25;
+    private int factInterval = 50;
     private int state = 1;
     private int foodCounter = 4;
     private String lastCode = "1337";
@@ -55,7 +55,7 @@ public class CCCC_Dlg
                 }
             }
         });
-        Timer t = new Timer(1000, new ActionListener() //adds a timer to change game state after a certain amount of time
+        Timer t = new Timer(200, new ActionListener() //adds a timer to change game state after a certain amount of time
         {
             int k = 0;
 
