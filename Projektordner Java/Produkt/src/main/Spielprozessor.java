@@ -42,20 +42,20 @@ public class Spielprozessor
 
             if (i / 3 == 1337)
             {
-                CCCC_Dlg.green_Lbl_wrongCode();
-                CCCC_Dlg.setLbl_wrongCode("Code eingelöst");
+                CDLG.green_Lbl_wrongCode();
+                CDLG.setLbl_wrongCode("Code eingelöst");
                 return true;
             }
             else {
-                CCCC_Dlg.red_Lbl_wrongCode();
-                CCCC_Dlg.setLbl_wrongCode("ungültiger Code");
+               CDLG.red_Lbl_wrongCode();
+                CDLG.setLbl_wrongCode("ungültiger Code");
             }
 
         }
         else
         {
-            CCCC_Dlg.red_Lbl_wrongCode();
-            CCCC_Dlg.setLbl_wrongCode("bereits Eingelöst");
+            CDLG.red_Lbl_wrongCode();
+            CDLG.setLbl_wrongCode("bereits Eingelöst");
         }
         return false;
     }
