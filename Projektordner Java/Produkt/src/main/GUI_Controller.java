@@ -14,7 +14,7 @@ import static main.Spielprozessor.SPZ;
 public class GUI_Controller
 {
     private JTextField tf_CodeField;
-    private JButton btn_CodeEinloesen;
+    public JButton btn_CodeEinloesen;
     private JButton btn_fuettern;
     public JPanel pnl_Main;
     private JLabel lbl_Display;
