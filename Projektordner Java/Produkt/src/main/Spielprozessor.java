@@ -23,7 +23,7 @@ public class Spielprozessor
     private int factInterval = 50;
     private int cereal_counter = 4;
     private String lastCode = "1337";
-    static GUI_Controller CDLG;
+    static GUI_Controller GUIC;
     static Spielprozessor SPZ;
     static Maskottchen MSK;
 
@@ -31,7 +31,7 @@ public class Spielprozessor
     public boolean checkcode()
     {
         int i = 0;
-        String[] result = CDLG.getTf_CodeField().split("-");
+        String[] result = GUIC.getTf_CodeField().split("-");
         for (int x=0; x<result.length; x++)
         {
             System.out.println(result[x]);
@@ -45,32 +45,32 @@ public class Spielprozessor
                 System.out.println("NumberFormatException: " + nfe.getMessage());
             }
         }
-        if (!CDLG.getTf_CodeField().equalsIgnoreCase(SPZ.lastCode))
+        if (!GUIC.getTf_CodeField().equalsIgnoreCase(SPZ.lastCode))
         {
             System.out.println("-----");
             System.out.println("Debug:");
             System.out.println(SPZ.lastCode);
-            System.out.println(CDLG.getTf_CodeField());
+            System.out.println(GUIC.getTf_CodeField());
             System.out.println("-----");
 
-            SPZ.lastCode = CDLG.getTf_CodeField();
+            SPZ.lastCode = GUIC.getTf_CodeField();
 
             if (i / 3 == 1337)
             {
-                CDLG.green_Lbl_wrongCode();
-                CDLG.setLbl_wrongCode("Code eingelöst");
+                GUIC.green_Lbl_wrongCode();
+                GUIC.setLbl_wrongCode("Code eingelöst");
                 return true;
             }
             else {
-               CDLG.red_Lbl_wrongCode();
-                CDLG.setLbl_wrongCode("ungültiger Code");
+               GUIC.red_Lbl_wrongCode();
+                GUIC.setLbl_wrongCode("ungültiger Code");
             }
 
         }
         else
         {
-            CDLG.red_Lbl_wrongCode();
-            CDLG.setLbl_wrongCode("bereits Eingelöst");
+            GUIC.red_Lbl_wrongCode();
+            GUIC.setLbl_wrongCode("bereits Eingelöst");
         }
         return false;
     }
@@ -83,7 +83,7 @@ public class Spielprozessor
     {
         if (a) {
             SPZ.cereal_counter += 4;
-            CDLG.setLbl_counter((String.valueOf(cereal_counter)));
+            GUIC.setLbl_counter((String.valueOf(cereal_counter)));
         }
     }
 
@@ -93,11 +93,11 @@ public class Spielprozessor
         ImageIcon icon1 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/neutral.png");
         ImageIcon icon2 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/hungry.png");
         if (state == 0)
-            CDLG.setLbl_Display(icon0);
+            GUIC.setLbl_Display(icon0);
         if (state == 1)
-            CDLG.setLbl_Display(icon1);
+            GUIC.setLbl_Display(icon1);
         if (state == 2)
-            CDLG.setLbl_Display(icon2);
+            GUIC.setLbl_Display(icon2);
     }
 
 
@@ -110,7 +110,7 @@ public class Spielprozessor
     {
         String[] facts = {"Es gibt 25 Hörnchen Untergattungen.","Streifenhörnchen wiegen zwischen 30 und 120 Gramm.","Streifenhörnchen sind tagaktiv","Streifenhörnchen leben hauptsächlich in Wäldern.","Die Tunnel der Streifenhörnchen können über 3.5m lang werden.","Streifenhörnchen teilen ihre Tunnel in Schlaf- und Abfalltunnel auf."};
         String random = (facts[new Random().nextInt(facts.length)]);
-        Spielprozessor.CDLG.setTa_FactArea(random);
+        GUIC.setTa_FactArea(random);
     }
 
     public static void main(String[] args)
@@ -120,7 +120,7 @@ public class Spielprozessor
        // GUI_Controller123 GUIC = new GUI_Controller123();
         MSK = new Maskottchen();
         SPZ = new Spielprozessor();
-        CDLG = new GUI_Controller();
+        GUIC = new GUI_Controller();
 
         JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
         frame.setContentPane(new GUI_Controller().pnl_Main);
@@ -206,11 +206,11 @@ public class Spielprozessor
 
                 if (SPZ.getCereal_counter() == 0 || MSK.getState() == 0)
                 {
-                    CDLG.enable_btn(false);
+                    GUIC.enable_btn(false);
                 }
                 else
                 {
-                    CDLG.enable_btn(true);
+                    GUIC.enable_btn(true);
                 }
 
                 // CCCC_Dlg.lbl_Display.setIcon(new ImageIcon(myPicture));
