@@ -12,13 +12,6 @@ import java.util.Random;
 
 public class Spielprozessor
 {
-    public int getCereal_counter() {
-        return cereal_counter;
-    }
-
-    public void setCereal_counter(int cereal_counter) {
-        this.cereal_counter = cereal_counter;
-    }
 
     private int displayInterval = 25;
     private int factInterval = 50;
@@ -28,6 +21,13 @@ public class Spielprozessor
     static Spielprozessor SPZ;
     static Maskottchen MSK;
 
+    public int getCereal_counter() {
+        return cereal_counter;
+    }
+
+    public void setCereal_counter(int cereal_counter) {
+        this.cereal_counter = cereal_counter;
+    }
 
     public boolean checkcode(String text)
     {
@@ -75,11 +75,6 @@ public class Spielprozessor
         }
         return false;
     }
-
-
-
-
-
     public void add_cerial(boolean a)
     {
         if (a)
@@ -101,7 +96,6 @@ public class Spielprozessor
             GUIC.setLbl_Display(icon2);
 
     }
-
 
     public void change_state()
     {
@@ -145,16 +139,6 @@ public class Spielprozessor
             String[] result = data.split("-");
             MSK.setState(Integer.valueOf(result[0]));
             SPZ.setCereal_counter(Integer.valueOf(result[1]));
-            // for (int x=0; x<result.length; x++)
-
-
-                /* {
-                if (x == 0)
-                MSK.setState(Integer.valueOf(result[x]));
-                if (x == 1)
-
-            }*/
-
         }
         catch (IOException e)
         {
@@ -165,77 +149,13 @@ public class Spielprozessor
     public static void main(String[] args)
     {
         System.out.println("Execution started.");
-
-       // GUI_Controller123 GUIC = new GUI_Controller123();
         MSK = new Maskottchen();
         SPZ = new Spielprozessor();
         GUIC = new GUI_Controller();
 
-
         GUIC.initGUI();
         SPZ.Load();
 
-
-
-        /*
-        JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
-        frame.setContentPane(new GUI_Controller().pnl_Main);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        frame.pack();
-        frame.setVisible(true);
-
-        Image icon = Toolkit.getDefaultToolkit().getImage("./Projektordner Java/Produkt/src/main/resources/Images/Chipmunk_Logo.png"); //set logo
-        frame.setIconImage(icon);
-
-        File directory = new File("./");        //Debug to see where we are
-        System.out.println(directory.getAbsolutePath());
-
-        frame.addWindowListener(new WindowListener()
-        {
-            @Override
-            public void windowOpened(WindowEvent e)
-            {
-
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) //Save Gamestate [int state, int healthyFood, string lastCode]
-            {
-                Save();
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e)
-            {
-
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e)
-            {
-
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e)
-            {
-
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e)
-            {
-
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e)
-            {
-
-            }
-        });
-*/
         Timer t = new Timer(200, new ActionListener() //adds a timer to change game state after a certain amount of time
         {
             int k = 0;
@@ -268,18 +188,9 @@ public class Spielprozessor
                 {
                     GUIC.enable_btn(true);
                 }
-
-                // CCCC_Dlg.lbl_Display.setIcon(new ImageIcon(myPicture));
             }
         });
-
         t.start();
-
-
     }
-
-
-
-
 
 }
