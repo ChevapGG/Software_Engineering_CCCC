@@ -9,6 +9,8 @@ import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Random;
 
 public class Spielprozessor
@@ -135,6 +137,33 @@ public class Spielprozessor
         }
     }
 
+    public static void Load()
+    {
+        String data = "";
+        try
+        {
+            data = new String(Files.readAllBytes(Paths.get("./Projektordner Java/Produkt/src/main/resources/Saves/Gamestate.dat")));
+            System.out.println("loading...");
+            System.out.println(data);
+            String[] result = data.split("-");
+            MSK.setState(Integer.valueOf(result[0]));
+            SPZ.setCereal_counter(Integer.valueOf(result[1]));
+            // for (int x=0; x<result.length; x++)
+
+
+                /* {
+                if (x == 0)
+                MSK.setState(Integer.valueOf(result[x]));
+                if (x == 1)
+
+            }*/
+
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args)
     {
@@ -145,7 +174,11 @@ public class Spielprozessor
         SPZ = new Spielprozessor();
         GUIC = new GUI_Controller();
 
+
         GUIC.initGUI();
+        SPZ.Load();
+
+
 
         /*
         JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
