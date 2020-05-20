@@ -19,8 +19,17 @@ public class GUI_Controller
     private int state = 1;
     private int cereal_counter = 4;
     private String lastCode = "1337";
+    private byte codeMode;
 
     private JTextArea ta_FactArea;
+
+    public byte getCodeMode() {
+        return codeMode;
+    }
+
+    public void setCodeMode(byte codeMode) {
+        this.codeMode = codeMode;
+    }
 
     public String getTa_FactArea() {
         return this.ta_FactArea.getText();
@@ -94,6 +103,27 @@ public class GUI_Controller
             public void actionPerformed(ActionEvent e)
             {
                 SPZ.add_cerial(SPZ.checkcode(tf_CodeField.getText()));
+                switch (Spielprozessor.GUIC.getCodeMode()){
+                    case 0: {
+                        green_Lbl_wrongCode();
+                        setLbl_wrongCode("Code eingelöst");
+                        System.out.println(codeMode);
+                        break;
+                    }
+                    case 1: {
+                        red_Lbl_wrongCode();
+                        setLbl_wrongCode("ungültiger Code");
+                        System.out.println(codeMode);
+                        break;
+                    }
+                    case 2: {
+                        red_Lbl_wrongCode();
+                        setLbl_wrongCode("bereits Eingelöst");
+                        System.out.println(codeMode);
+                        break;
+                    }
+
+                }
                 setLbl_counter(((toString().valueOf(SPZ.getCereal_counter()))));
             }
         });

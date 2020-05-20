@@ -59,21 +59,20 @@ public class Spielprozessor
 
             if (i / 3 == 1337)
             {
-                GUIC.green_Lbl_wrongCode();
-                GUIC.setLbl_wrongCode("Code eingelöst");
-               System.out.println("CodeDing: " + GUIC.getLbl_wrongCode());
+                GUIC.setCodeMode((byte) 0);
+                System.out.println(GUIC.getCodeMode());
                 return true;
             }
             else {
-               GUIC.red_Lbl_wrongCode();
-                GUIC.setLbl_wrongCode("ungültiger Code");
+                GUIC.setCodeMode((byte) 1);
+                System.out.println(GUIC.getCodeMode());
             }
 
         }
         else
         {
-            GUIC.red_Lbl_wrongCode();
-            GUIC.setLbl_wrongCode("bereits Eingelöst");
+            GUIC.setCodeMode((byte) 2);
+            System.out.println(GUIC.getCodeMode());
         }
         return false;
     }
