@@ -61,6 +61,7 @@ public class Spielprozessor
             {
                 GUIC.green_Lbl_wrongCode();
                 GUIC.setLbl_wrongCode("Code eingelöst");
+               System.out.println("CodeDing: " + GUIC.getLbl_wrongCode());
                 return true;
             }
             else {
@@ -83,10 +84,9 @@ public class Spielprozessor
 
     public void add_cerial(boolean a)
     {
-        if (a) {
+        if (a)
+        {
             SPZ.cereal_counter += 4;
-            GUIC.setLbl_counter((String.valueOf(SPZ.getCereal_counter())));
-            System.out.println(SPZ.getCereal_counter());
         }
     }
 

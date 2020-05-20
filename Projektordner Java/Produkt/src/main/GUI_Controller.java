@@ -83,8 +83,8 @@ public class GUI_Controller
     public JPanel pnl_Main;
     private JLabel lbl_Display;
     private JLabel lbl_counter;
-    private JLabel lbl_wrongCode;
-
+    public JLabel lbl_wrongCode;
+    private JFrame frame;
 
     public GUI_Controller()
     {
@@ -94,6 +94,7 @@ public class GUI_Controller
             public void actionPerformed(ActionEvent e)
             {
                 SPZ.add_cerial(SPZ.checkcode(tf_CodeField.getText()));
+                setLbl_counter(((toString().valueOf(SPZ.getCereal_counter()))));
             }
         });
         btn_fuettern.addActionListener(new ActionListener() //feed Chipmunk and decrement food counter
@@ -159,7 +160,7 @@ public class GUI_Controller
 
 public void initGUI()
 {
-    JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
+    frame = new JFrame("Cherry Chipmunks Cereal Choice");
     frame.setContentPane(new GUI_Controller().pnl_Main);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
