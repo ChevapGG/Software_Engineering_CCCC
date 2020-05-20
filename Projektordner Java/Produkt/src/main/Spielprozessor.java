@@ -100,6 +100,7 @@ public class Spielprozessor
             GUIC.setLbl_Display(icon1);
         if (state == 2)
             GUIC.setLbl_Display(icon2);
+
     }
 
 

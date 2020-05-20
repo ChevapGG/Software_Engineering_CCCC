@@ -12,8 +12,7 @@ import java.util.Random;
 import static main.Spielprozessor.MSK;
 import static main.Spielprozessor.SPZ;
 
-public class GUI_Controller
-{
+public class GUI_Controller {
     private int displayInterval = 25;
     private int factInterval = 50;
     private int state = 1;
@@ -22,6 +21,7 @@ public class GUI_Controller
     private byte codeMode;
 
     private JTextArea ta_FactArea;
+
 
     public byte getCodeMode() {
         return codeMode;
@@ -80,8 +80,7 @@ public class GUI_Controller
         this.lbl_wrongCode.setForeground(Color.red);
     }
 
-    public void enable_btn(boolean a)
-    {
+    public void enable_btn(boolean a) {
         this.btn_fuettern.setEnabled(a);
     }
 
@@ -95,15 +94,28 @@ public class GUI_Controller
     public JLabel lbl_wrongCode;
     private JFrame frame;
 
-    public GUI_Controller()
-    {
+    public GUI_Controller() {
+        Timer t = new Timer(200, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ImageIcon icon0 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/happy.png");
+                ImageIcon icon1 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/neutral.png");
+                ImageIcon icon2 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/hungry.png");
+                if (MSK.getState() == 0)
+                    setLbl_Display(icon0);
+                if (MSK.getState() == 1)
+                    setLbl_Display(icon1);
+                if (MSK.getState() == 2)
+                    setLbl_Display(icon2);
+            }
+        });
+        t.start();
         btn_CodeEinloesen.addActionListener(new ActionListener() //Check if the code in textField1 is correct
         {
             @Override
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 SPZ.add_cerial(SPZ.checkcode(tf_CodeField.getText()));
-                switch (Spielprozessor.GUIC.getCodeMode()){
+                switch (Spielprozessor.GUIC.getCodeMode()) {
                     case 0: {
                         green_Lbl_wrongCode();
                         setLbl_wrongCode("Code eingelöst");
@@ -131,8 +143,7 @@ public class GUI_Controller
         {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (SPZ.getCereal_counter() > 0 && MSK.getState() > 0)
-                {
+                if (SPZ.getCereal_counter() > 0 && MSK.getState() > 0) {
                     SPZ.setCereal_counter(SPZ.getCereal_counter() - 1);
                     MSK.setState(MSK.getState() - 1);
                     lbl_counter.setText(String.valueOf(SPZ.getCereal_counter()));
@@ -183,10 +194,12 @@ public class GUI_Controller
 
     }
 
-    private void createUIComponents()
-    {
+    private void createUIComponents() {
         // TODO: place custom component creation code here
     }
+
+
+
 
 public void initGUI()
 {
