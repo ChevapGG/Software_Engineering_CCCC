@@ -59,10 +59,18 @@ public class CCCC_Dlg
         lbl_wrongCode.setText(a);
     }
 
+    public void green_Lbl_wrongCode() {
+        lbl_wrongCode.setForeground(Color.green);
+    }
+
+    public void red_Lbl_wrongCode() {
+        lbl_wrongCode.setForeground(Color.red);
+    }
+
     private JTextField tf_CodeField;
     private JButton btn_CodeEinloesen;
     private JButton btn_fuettern;
-    private JPanel pnl_Main;
+    public JPanel pnl_Main;
     private JLabel lbl_Display;
     private JLabel lbl_counter;
     private JLabel lbl_wrongCode;
@@ -144,69 +152,7 @@ public class CCCC_Dlg
     }
 
 
-    public static void main(String[] args)
-    {
-        System.out.println("Execution started.");
-        JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
-        frame.setContentPane(new CCCC_Dlg().pnl_Main);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.pack();
-        frame.setVisible(true);
-
-        Image icon = Toolkit.getDefaultToolkit().getImage("./Projektordner Java/Produkt/src/main/resources/Images/Chipmunk_Logo.png"); //set logo
-        frame.setIconImage(icon);
-
-        File directory = new File("./");        //Debug to see where we are
-        System.out.println(directory.getAbsolutePath());
-
-        frame.addWindowListener(new WindowListener()
-        {
-            @Override
-            public void windowOpened(WindowEvent e)
-            {
-
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) //Save Gamestate [int state, int healthyFood, string lastCode]
-            {
-
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e)
-            {
-
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e)
-            {
-
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e)
-            {
-
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e)
-            {
-
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e)
-            {
-
-            }
-        });
-
-
-    }
 
 
     public void changeDisplay(int state)
