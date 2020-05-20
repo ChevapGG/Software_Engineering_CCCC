@@ -107,6 +107,7 @@ public class GUI_Controller {
                     setLbl_Display(icon1);
                 if (MSK.getState() == 2)
                     setLbl_Display(icon2);
+                setTa_FactArea(Spielprozessor.GUIC.getTa_FactArea());
             }
         });
         t.start();
