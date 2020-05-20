@@ -10,7 +10,7 @@ public class Spielprozessor
 {
     private int cereal_counter = 4;
     private String lastCode = "1337";
-    static CCCC_Dlg CDLG;
+    static GUI_Controller CDLG;
 
 
     public boolean checkcode()
@@ -66,13 +66,13 @@ public class Spielprozessor
     {
         System.out.println("Execution started.");
 
-        GUI_Controller GUIC = new GUI_Controller();
+        GUI_Controller123 GUIC = new GUI_Controller123();
         Maskottchen MSK = new Maskottchen();
         //Spielprozessor SPZ = new Spielprozessor();
-        CDLG = new CCCC_Dlg();
+        CDLG = new GUI_Controller();
 
         JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
-        frame.setContentPane(new CCCC_Dlg().pnl_Main);
+        frame.setContentPane(new GUI_Controller().pnl_Main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.pack();
