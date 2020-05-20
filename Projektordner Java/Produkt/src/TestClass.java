@@ -5,7 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
-import javax.swing.*;
 
 public class TestClass {
 
