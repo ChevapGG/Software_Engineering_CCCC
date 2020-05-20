@@ -30,10 +30,10 @@ public class Spielprozessor
     static Maskottchen MSK;
 
 
-    public boolean checkcode()
+    public boolean checkcode(String text)
     {
         int i = 0;
-        String[] result = GUIC.getTf_CodeField().split("-");
+        String[] result = text.split("-");
         for (int x=0; x<result.length; x++)
         {
             System.out.println(result[x]);
@@ -47,15 +47,15 @@ public class Spielprozessor
                 System.out.println("NumberFormatException: " + nfe.getMessage());
             }
         }
-        if (!GUIC.getTf_CodeField().equalsIgnoreCase(SPZ.lastCode))
+        if (!text.equalsIgnoreCase(SPZ.lastCode))
         {
             System.out.println("-----");
             System.out.println("Debug:");
             System.out.println(SPZ.lastCode);
-            System.out.println(GUIC.getTf_CodeField());
+            System.out.println(text);
             System.out.println("-----");
 
-            SPZ.lastCode = GUIC.getTf_CodeField();
+            SPZ.lastCode = text;
 
             if (i / 3 == 1337)
             {
@@ -85,7 +85,8 @@ public class Spielprozessor
     {
         if (a) {
             SPZ.cereal_counter += 4;
-            GUIC.setLbl_counter((String.valueOf(cereal_counter)));
+            GUIC.setLbl_counter((String.valueOf(SPZ.getCereal_counter())));
+            System.out.println(SPZ.getCereal_counter());
         }
     }
 
@@ -115,12 +116,13 @@ public class Spielprozessor
         GUIC.setTa_FactArea(random);
     }
 
-    private static void Save(String data) {
-        File file = new File("/Users/pankaj/FileWriter.txt");
+    public static void Save() {
+        File file = new File("./Projektordner Java/Produkt/src/main/resources/Saves/Gamestate.dat");
         FileWriter fr = null;
+        String save_data = MSK.getState() + "-" + SPZ.getCereal_counter();
         try {
             fr = new FileWriter(file);
-            fr.write(data);
+            fr.write(save_data);
         } catch (IOException e) {
             e.printStackTrace();
         }finally{
@@ -143,6 +145,9 @@ public class Spielprozessor
         SPZ = new Spielprozessor();
         GUIC = new GUI_Controller();
 
+        GUIC.initGUI();
+
+        /*
         JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
         frame.setContentPane(new GUI_Controller().pnl_Main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -167,7 +172,7 @@ public class Spielprozessor
             @Override
             public void windowClosing(WindowEvent e) //Save Gamestate [int state, int healthyFood, string lastCode]
             {
-
+                Save();
             }
 
             @Override
@@ -200,7 +205,7 @@ public class Spielprozessor
 
             }
         });
-
+*/
         Timer t = new Timer(200, new ActionListener() //adds a timer to change game state after a certain amount of time
         {
             int k = 0;

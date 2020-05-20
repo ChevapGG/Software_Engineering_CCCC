@@ -23,56 +23,57 @@ public class GUI_Controller
     private JTextArea ta_FactArea;
 
     public String getTa_FactArea() {
-        return ta_FactArea.getText();
+        return this.ta_FactArea.getText();
     }
 
     public void setTa_FactArea(String a) {
-        ta_FactArea.setText(a);
+        this.ta_FactArea.setText(a);
     }
 
     public String getTf_CodeField() {
-        return tf_CodeField.getText();
+        System.out.println("CODEFIELDTEXT:" + tf_CodeField.getText());
+        return this.tf_CodeField.getText();
     }
 
     public void setTf_CodeField(String a) {
-        tf_CodeField.setText(a);
+        this.tf_CodeField.setText(a);
     }
 
     public Icon getLbl_Display() {
-        return lbl_Display.getIcon();
+        return this.lbl_Display.getIcon();
     }
 
     public void setLbl_Display(ImageIcon a) {
-        lbl_Display.setIcon(a);
+        this.lbl_Display.setIcon(a);
     }
 
     public Icon getLbl_counter() {
-        return lbl_counter.getIcon();
+        return this.lbl_counter.getIcon();
     }
 
     public void setLbl_counter(String a) {
-        lbl_counter.setText(String.valueOf(a));
+        this.lbl_counter.setText(a);
     }
 
     public String getLbl_wrongCode() {
-        return lbl_wrongCode.getText();
+        return this.lbl_wrongCode.getText();
     }
 
     public void setLbl_wrongCode(String a) {
-        lbl_wrongCode.setText(a);
+        this.lbl_wrongCode.setText(a);
     }
 
     public void green_Lbl_wrongCode() {
-        lbl_wrongCode.setForeground(Color.green);
+        this.lbl_wrongCode.setForeground(Color.green);
     }
 
     public void red_Lbl_wrongCode() {
-        lbl_wrongCode.setForeground(Color.red);
+        this.lbl_wrongCode.setForeground(Color.red);
     }
 
     public void enable_btn(boolean a)
     {
-        btn_fuettern.setEnabled(a);
+        this.btn_fuettern.setEnabled(a);
     }
 
 
@@ -92,7 +93,7 @@ public class GUI_Controller
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                SPZ.add_cerial(SPZ.checkcode());
+                SPZ.add_cerial(SPZ.checkcode(tf_CodeField.getText()));
             }
         });
         btn_fuettern.addActionListener(new ActionListener() //feed Chipmunk and decrement food counter
@@ -156,7 +157,66 @@ public class GUI_Controller
         // TODO: place custom component creation code here
     }
 
+public void initGUI()
+{
+    JFrame frame = new JFrame("Cherry Chipmunks Cereal Choice");
+    frame.setContentPane(new GUI_Controller().pnl_Main);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    frame.pack();
+    frame.setVisible(true);
+
+    Image icon = Toolkit.getDefaultToolkit().getImage("./Projektordner Java/Produkt/src/main/resources/Images/Chipmunk_Logo.png"); //set logo
+    frame.setIconImage(icon);
+
+    File directory = new File("./");        //Debug to see where we are
+    System.out.println(directory.getAbsolutePath());
+
+    frame.addWindowListener(new WindowListener()
+    {
+        @Override
+        public void windowOpened(WindowEvent e)
+        {
+
+        }
+
+        @Override
+        public void windowClosing(WindowEvent e) //Save Gamestate [int state, int healthyFood, string lastCode]
+        {
+            SPZ.Save();
+        }
+
+        @Override
+        public void windowClosed(WindowEvent e)
+        {
+
+        }
+
+        @Override
+        public void windowIconified(WindowEvent e)
+        {
+
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent e)
+        {
+
+        }
+
+        @Override
+        public void windowActivated(WindowEvent e)
+        {
+
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent e)
+        {
+
+        }
+    });
+}
 
 
 /*
