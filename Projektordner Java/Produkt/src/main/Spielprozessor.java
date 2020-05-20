@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 
 public class Spielprozessor
@@ -113,6 +115,25 @@ public class Spielprozessor
         GUIC.setTa_FactArea(random);
     }
 
+    private static void Save(String data) {
+        File file = new File("/Users/pankaj/FileWriter.txt");
+        FileWriter fr = null;
+        try {
+            fr = new FileWriter(file);
+            fr.write(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            //close resources
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
     public static void main(String[] args)
     {
         System.out.println("Execution started.");
@@ -198,7 +219,7 @@ public class Spielprozessor
 
                 if (k%SPZ.displayInterval == 0)
                 {
-                    System.out.println("new Facts!");
+                    System.out.println("More Hunger!");
                     if (MSK.getState() < 2)
                         MSK.setState(MSK.getState() + 1);
                     SPZ.changeDisplay(MSK.getState());
