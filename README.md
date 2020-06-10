@@ -10,8 +10,6 @@
 
 #### Anwenderdokumentation
 
-![](./Dokumenteordner/Misc/Window.png)
-
 * Fakten: 
     * Alle fünf Sekunden wird ein neuer Fakt angezeigt
     * Alle zehn Sekunden ist ein neuer Fakt verfügbar
@@ -28,3 +26,5 @@
 * Speichern und Beenden
     * Der aktuelle Spielstand wird automatisch beim Beenden in eine .dat Datei gespeichert.
     * Beim Spielstart wird aus der gleichen Datei der aktuelle Stand geladen 
+* About
+    * Ein klick auf den "About" Button zeigt Versions- und Herkunftsinformationen an

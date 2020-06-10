@@ -10,10 +10,22 @@
 
 #### Administratordokumentation
 
-##### Build:
+##### Installation:
 
-* Aus dem Ordner "Projektordner Java/Produkt/src/main/CCCC_DLG" die Datei "CCCC_DLG.java" finden
-* mittels javac CCCC_DLG.java die Klasse bauen
+* keine besonderen Schritte notwendig
 
-##### Run:
-* Ausführen der .class Datei mittels "java CCCC_DLG.class"
+##### Ausführen:
+
+* Aus dem Ordner "final/Produkt/" die Datei "Produkt.jar" ausfindig machen
+* mittels Doppelklick ausführen
+
+##### Update:
+
+* Produkt.jar durch aktualisierte Datei ersetzen und auf herkömmliche Weise ausführen.
+
+##### Fehlerfall:
+
+* Probleme beim Starten der Anwendung, Update:
+    * Ausführungen überprüfen und beachten
+* Sonstige Fehlfunktionen:
+    * An Entwickler senden
