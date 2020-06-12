@@ -23,6 +23,7 @@ public class GUI_Controller
     private JFrame frame;
     private byte codeMode;
     private JTextArea ta_FactArea;
+    private JButton btn_about;
 
     public byte getCodeMode()
     {
@@ -100,6 +101,14 @@ public class GUI_Controller
         this.btn_fuettern.setEnabled(a);
     }
 
+    public void about()
+    {
+        JOptionPane.showMessageDialog(null,
+                "Cherry Chipmunks Cereal Choice\n V1.0.1\n LDJ Software im Auftrag von CCCC AG",
+                "About",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public GUI_Controller()
     {
         Timer t = new Timer(200, new ActionListener()
@@ -111,7 +120,7 @@ public class GUI_Controller
                 ImageIcon icon0 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/happy.png");
                 ImageIcon icon1 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/neutral.png");
                 ImageIcon icon2 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/hungry.png");
-                */
+                *///1337-1337-1337
                 ImageIcon icon0 = new ImageIcon("./Images/happy.png");
                 ImageIcon icon1 = new ImageIcon("./Images/neutral.png");
                 ImageIcon icon2 = new ImageIcon("./Images/hungry.png");
@@ -177,6 +186,12 @@ public class GUI_Controller
             }
         });
 
+        btn_about.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                about();
+            }
+        });
     }
 
     private void createUIComponents() {
@@ -187,7 +202,7 @@ public void initGUI()
 {
     frame = new JFrame("Cherry Chipmunks Cereal Choice");
     frame.setContentPane(new GUI_Controller().pnl_Main);
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     frame.pack();
     frame.setVisible(true);
     Image icon = Toolkit.getDefaultToolkit().getImage("./Projektordner Java/Produkt/src/main/resources/Images/Chipmunk_Logo.png"); //set logo
@@ -199,7 +214,7 @@ public void initGUI()
         @Override
         public void windowOpened(WindowEvent e)
         {
-
+            //JOptionPane.showMessageDialog(null, "My Goodness, this is so concise");
         }
 
         @Override
@@ -212,7 +227,7 @@ public void initGUI()
         @Override
         public void windowClosed(WindowEvent e)
         {
-
+            //System.exit(0);
         }
 
         @Override

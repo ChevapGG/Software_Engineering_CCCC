@@ -5,20 +5,30 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+import java.awt.event.InputEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-public class TestClass {
+public class TestClass
+{
+
+
 
     @Test(priority = 1)
-    void setUp() {
+    void setUp()
+    {
         // code that will be invoked when this test is instantiated
-        //open window
         System.out.println("Setup");
-        String[] args = new String[1];
-        Spielprozessor.main(args);
+        Spielprozessor.main(null); //open Game
     }
 
     @Test(priority = 2)
-    void test1() {
+    void test1()
+    {
         System.out.println("test save feature");
 
         Spielprozessor SPZ = new Spielprozessor();
@@ -38,23 +48,23 @@ public class TestClass {
     }
 
     @Test(priority = 3)
-    void test2() {
-        System.out.println("Teste Codes (+mehrmalige Eingabe dieser");
+    void test2()
+    {
+        System.out.println("Teste Codes (+mehrmalige Eingabe dieser)");
 
         Spielprozessor SPZ = new Spielprozessor();
         GUI_Controller GUIC = new GUI_Controller();
         Maskottchen MSK = new Maskottchen();
 
-        Assert.assertTrue(SPZ.checkcode("1337-1337-1337"));
-        Assert.assertFalse(SPZ.checkcode("1337-1337-1337"));
-
-
+        Assert.assertTrue(SPZ.checkcode("1337-1337-1336-1"));
+        Assert.assertFalse(SPZ.checkcode("1337-1337-1336-1"));
     }
+
 
 
     @AfterTest
-    public void endSession() {
+    public void endSession()
+    {
             System.out.println("end of Test");
     }
-
 }

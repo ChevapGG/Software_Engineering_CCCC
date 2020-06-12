@@ -21,6 +21,7 @@ public class Spielprozessor
     static Spielprozessor SPZ;
     static Maskottchen MSK;
 
+
     public int getCereal_counter() {
         return cereal_counter;
     }
@@ -85,9 +86,9 @@ public class Spielprozessor
 
     public void changeDisplay(int state)
     {
-        ImageIcon icon0 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/happy.png");
-        ImageIcon icon1 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/neutral.png");
-        ImageIcon icon2 = new ImageIcon("./Projektordner Java/Produkt/src/main/resources/Images/hungry.png");
+        ImageIcon icon0 = new ImageIcon("./Images/happy.png");
+        ImageIcon icon1 = new ImageIcon("./Images/neutral.png");
+        ImageIcon icon2 = new ImageIcon("./Images/hungry.png");
         if (state == 0)
             GUIC.setLbl_Display(icon0);
         if (state == 1)
@@ -110,7 +111,8 @@ public class Spielprozessor
     }
 
     public static void Save() {
-        File file = new File("./Projektordner Java/Produkt/src/main/resources/Saves/Gamestate.dat");
+       // File file = new File("./Projektordner Java/Produkt/src/main/resources/Saves/Gamestate.dat");
+        File file = new File("./Gamestate.dat");
         FileWriter fr = null;
         String save_data = MSK.getState() + "-" + SPZ.getCereal_counter();
         try {
@@ -133,7 +135,8 @@ public class Spielprozessor
         String data = "";
         try
         {
-            data = new String(Files.readAllBytes(Paths.get("./Projektordner Java/Produkt/src/main/resources/Saves/Gamestate.dat")));
+            //data = new String(Files.readAllBytes(Paths.get("./Projektordner Java/Produkt/src/main/resources/Saves/Gamestate.dat")));
+           data = new String(Files.readAllBytes(Paths.get("./Gamestate.dat")));
             System.out.println("loading...");
             System.out.println(data);
             String[] result = data.split("-");
